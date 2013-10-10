@@ -11,7 +11,7 @@ class DatawrapperPlugin_ExportImage extends DatawrapperPlugin {
             if ($user->getEmail() == '') return array();
             return array(
                 'id' => 'export-image',
-                'title' => __("Export to static image for printing", $plugin->getName()),
+                'title' => __("Export as static image", $plugin->getName()),
                 'icon' => 'print'
             );
         });

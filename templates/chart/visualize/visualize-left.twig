@@ -1,0 +1,28 @@
+
+<h3>{% trans "Chart type" %}</h3>
+<select>
+    {% for vis in visualizations %}{% if vis.title %}
+        <option data-thumbnail="{{ vis.__static_path }}{{ vis.id }}.png" data-static-path="{{ vis.__static_path }}" value="{{ vis.id }}"{% if vis.id == chart.type %} selected="selected"{% endif %}>{{ vis.title }}</option>
+    {% endif %}{% endfor %}
+</select>
+<p>
+    <b>{% trans "Hint" %}:</b> {% trans "In case the visualization doesn't look like you expected, you should try to <a href='#' id='btn-transpose'><i class='icon-rotate'></i> transpose the data</a>." %}
+</p>
+
+{# todo: axes editor #}
+
+<h3>{% trans "Dimensions" %}</h3>
+
+...
+
+
+
+{% if vis.dimensions == 1 %}
+<div class="control-group select-row">
+    <label class="control-label" for="text-title">{% trans "Initial row to display" %}</label>
+    <div class="controls">
+        <select id="select-row" style="width:100%">
+        </select>
+    </div>
+</div>
+{% endif %}

@@ -28,32 +28,24 @@ dw.backend.ready(function() {
 
 <div class="dw-create-visualize chart-editor">
     <div class="row">
+        <div class="span2-5">
+            {% include "chart/visualize/sidebar-left.twig" %}
+        </div>
         <div class="span7">
 
-            <div data-offset-top="100" data-offset-bottom="130">
+            <div>
                 <div id="iframe-wrapper" style="height:500px;" >
-                    <iframe src="/chart/{{ chart.id }}/preview?innersvg=1&amp;random={{ random() }}" id="iframe-vis" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen>
+                    <iframe src="/chart/{{ chart.id }}/preview?plain=1&amp;innersvg=1&amp;random={{ random() }}" id="iframe-vis" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen>
                     </iframe>
-                </div>
-                <div class="resize-chart-wrap">
-                    <div class="resize-chart">
-                        {% trans "Resize to: " %}
-                        <input id="resize-w" class="input-large" type="text" value="" /> ×
-                        <input id="resize-h" class="input-large" type="text" value="" />
-                        (e.g. <a href="#">480×320</a>
-                        <a href="#">480×480</a>
-                        <a href="#">640×360</a>
-                        <a href="#">640×480</a>)
-                    </div>
                 </div>
             </div>
 
             <div id="notifications"></div>
 
         </div>
-
-        {% include "chart/visualize/sidebar.twig" %}
-
+        <div class="span2-5">
+            {% include "chart/visualize/sidebar-right.twig" %}
+        </div>
     </div>
 </div>
 

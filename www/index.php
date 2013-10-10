@@ -40,6 +40,7 @@ require_once ROOT_PATH . 'controller/chart-edit.php';
 require_once ROOT_PATH . 'controller/chart-upload.php';
 require_once ROOT_PATH . 'controller/chart-describe.php';
 require_once ROOT_PATH . 'controller/chart-visualize.php';
+require_once ROOT_PATH . 'controller/chart-annotate.php';
 require_once ROOT_PATH . 'controller/chart-data.php';
 require_once ROOT_PATH . 'controller/chart-preview.php';
 require_once ROOT_PATH . 'controller/chart-embed.php';

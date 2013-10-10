@@ -11,13 +11,16 @@ class DatawrapperPlugin_VisualizationLineChart extends DatawrapperPlugin_Visuali
             "order" => 40,
             "axes" => array(
                 "x" => array(
+                    "title" => __("Horizontal (x)"),
                     "accepts" => array("text", "date"),
                 ),
                 "y1" => array(
+                    "title" => __("Vertical (y)"),
                     "accepts" => array("number"),
                     "multiple" => true
                 ),
                 "y2" => array(
+                    "title" => __("2nd vertical (y2)"),
                     "accepts" => array("number"),
                     "multiple" => true,
                     "optional" => true
@@ -59,7 +62,7 @@ class DatawrapperPlugin_VisualizationLineChart extends DatawrapperPlugin_Visuali
                 "help" => __("Show the labels right nearby the line ends instead of a separate legend")
             ),
             "legend-position" => array(
-                "type" => "radio-left",
+                "type" => "select",
                 "label" => __("Legend position"),
                 "default" => "right",
                 "depends-on" => array(
@@ -125,7 +128,7 @@ class DatawrapperPlugin_VisualizationLineChart extends DatawrapperPlugin_Visuali
                 )
             ),
             "line-mode" => array(
-                "type" => "radio-left",
+                "type" => "select",
                 "label" => __("Line interpolation"),
                 "options" => array(
                     array("label" => __("Straight"), "value" => "straight"),
@@ -153,7 +156,7 @@ class DatawrapperPlugin_VisualizationLineChart extends DatawrapperPlugin_Visuali
                 "default" => false
             ),
             "scale-y1" => array(
-                "type" => "radio-left",
+                "type" => "select",
                 "label" => __("Scale (y-axis)"),
                 "options" => array(
                     array("label" => __("linear"), "value" => "linear"),

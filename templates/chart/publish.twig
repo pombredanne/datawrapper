@@ -12,11 +12,16 @@ dw.backend.ready(function() {
 </script>
 <div class="dw-create-publish chart-editor">
     <div class="row">
-        <div class="span4">
+        <div class="span2-5">
 
             {% if user.isAbleToPublish %}
 
             <p class="lead" style="margin-top:0">{% trans "Link to this visualisation" %}</p>
+
+            {% if not republish and chart.lastEditStep == 5 %}
+                <p class="published alert alert-success">{% trans "Congrats, your chart has been published." %}</p>
+            {% endif %}
+
             <p><a href="{{ chartUrl }}">{{ chartUrl }}</a></p>
 
             {% if republish %}
@@ -32,34 +37,14 @@ dw.backend.ready(function() {
 
             {% endif %}
 
-            <p class="lead">{% trans "Embed into your website" %}</p>
+            <p class="lead">{% trans "Embed code" %}</p>
             <p>{% trans "Just copy &amp; paste the following code into your website." %}</p>
             <form class="form-inline">
-                <label>{% trans "Width" %}: <input type="text" id="embed-width" class="input-small" style="width:4ex" value="600" /> px</label>&nbsp;&nbsp;
-                <label>{% trans "Height" %}: <input type="text" id="embed-height" class="input-small" style="width:4ex" value="400" /> px</label>
 
-            <textarea style="font-size: 13px;padding:5px" id="iframe-code" class="well span4" rows="5"><iframe src="{{ chartUrl }}" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" oallowfullscreen="oallowfullscreen" msallowfullscreen="msallowfullscreen" width="{{ chart.metadata.publish['embed-width'] }}" height="{{ chart.metadata.publish['embed-height'] }}"></iframe></textarea>
+                <textarea style="font-size: 11px;padding:5px;line-height:13px;" id="iframe-code" class="well span2-5" rows="7"><iframe src="{{ chartUrl }}" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" oallowfullscreen="oallowfullscreen" msallowfullscreen="msallowfullscreen" width="{{ chart.metadata.publish['embed-width'] }}" height="{{ chart.metadata.publish['embed-height'] }}"></iframe></textarea>
 
-
-            <p class="lead">{%trans "Other things to do" %}</p>
-
-            {% for action in chartActions %}
-            {% if action %}
-            <p>
-                <a role="button" href="#{{ action.id }}">
-                    <i class="icon-{{ action.icon }}"></i>&nbsp;&nbsp;{{ action.title }}
-                </a>
-            </p>
-            {% endif %}
-            {% endfor %}
-
-            <p>
-                <a class="duplicate" role="button">
-                    <i class="icon-plus"></i>&nbsp;&nbsp;{% trans "Duplicate this chart" %}
-                </a>
-            </p>
-
-            {{ hook('publish_after_chart_actions', chart, user) }}
+                <div style="margin-top:10px;text-align:center"><label>{% trans "W" %}:</label> <input type="text" id="embed-width" class="input-small" style="width:4ex" value="600" /> <label>{% trans "H" %} :</label> <input type="text" id="embed-height" class="input-small" style="width:4ex" value="400" /> px</div>
+            </form>
 
             {% elseif user.role == 'guest' %}
 
@@ -127,10 +112,6 @@ dw.backend.ready(function() {
                 {% endif %}
             {% endif %}
 
-            {% if chart.lastEditStep == 5 %}
-                <p class="published alert alert-success">{% trans "Congrats, your chart has been published." %}</p>
-            {% endif %}
-
             <iframe src="{% if publish %}{{ chartUrlLocal }}{% else %}{{ chartUrl }}{% endif %}" id="iframe-vis" style="width:{{ chart.metadata.publish['embed-width'] }}px;height:{{ chart.metadata.publish['embed-height'] }}px" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
             <div style="color: #999;margin-top:20px"><b>{% trans "Note" %}:</b> {% trans "It may take a couple of minutes until the re-direction from old chart urls to the newest version takes effect." %}</div>
@@ -141,6 +122,27 @@ dw.backend.ready(function() {
 
 
             {% endif %}
+        </div>
+        <div class="span2-5">
+            <p class="lead" style="margin-top:0">{%trans "Other things to do" %}</p>
+
+            {% for action in chartActions %}
+            {% if action %}
+            <p>
+                <a role="button" href="#{{ action.id }}">
+                    <i class="icon-{{ action.icon }}"></i>&nbsp;&nbsp;{{ action.title }}
+                </a>
+            </p>
+            {% endif %}
+            {% endfor %}
+
+            <p>
+                <a class="duplicate" role="button">
+                    <i class="icon-plus"></i>&nbsp;&nbsp;{% trans "Duplicate this chart" %}
+                </a>
+            </p>
+
+            {{ hook('publish_after_chart_actions', chart, user) }}
         </div>
     </div>
 

@@ -56,6 +56,10 @@ function(initHighlightSeries, visOptions, themes, checkChartHeight, loadVisDfd,
             options.init(chart, visJSON);
         });
 
+        // init axes editor
+        require(['dw/chart/visualize/axesEditor'], function(axesEditor) {
+            axesEditor.init(chart, visJSON);
+        });
     }
 
     function onChartSave(chart) {

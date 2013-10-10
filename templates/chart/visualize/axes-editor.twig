@@ -1,0 +1,17 @@
+
+{# axes editor #}
+
+<h3>{% trans "Dimensions" %}</h3>
+
+<div class="axes-editor">
+
+    {% for axis in vis.axes %}
+
+    <div class="axis" data-axis="{{ axis.id }}">
+        <label>{{ axis.title }}</label>
+        <select{% if axis.multiple %} multiple="multiple"{% endif %}></select>
+    </div>
+
+    {% endfor %}
+
+</div>

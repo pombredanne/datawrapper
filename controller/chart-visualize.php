@@ -16,12 +16,11 @@ $app->get('/chart/:id/visualize', function ($id) use ($app) {
             'visualizations_deps' => DatawrapperVisualization::all('dependencies'),
             'visualizations' => DatawrapperVisualization::all(),
             'vis' => DatawrapperVisualization::get($chart->getType()),
-            'themes' => DatawrapperTheme::all(),
             'theme' => DatawrapperTheme::get($chart->getTheme()),
             'debug' => !empty($GLOBALS['dw_config']['debug_export_test_cases']) ? '1' : '0'
         );
-        add_header_vars($page, 'chart');
-        add_editor_nav($page, 3);
+        add_header_vars($page, 'chart', 'chart-editor/visualize.css');
+        add_editor_nav($page, 2);
 
         $app->render('chart/visualize.twig', $page);
     });

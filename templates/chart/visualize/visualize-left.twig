@@ -1,20 +1,36 @@
 
 <h3>{% trans "Chart type" %}</h3>
-<select>
+<select id="chart-type">
     {% for vis in visualizations %}{% if vis.title %}
-        <option data-thumbnail="{{ vis.__static_path }}{{ vis.id }}.png" data-static-path="{{ vis.__static_path }}" value="{{ vis.id }}"{% if vis.id == chart.type %} selected="selected"{% endif %}>{{ vis.title }}</option>
+        <option data-data='{{ vis | json | raw }}' value="{{ vis.id }}" {% if vis.id == chart.type %} selected="selected"{% endif %}>{{ vis.title }}</option>
     {% endif %}{% endfor %}
 </select>
 <p>
     <b>{% trans "Hint" %}:</b> {% trans "In case the visualization doesn't look like you expected, you should try to <a href='#' id='btn-transpose'><i class='icon-rotate'></i> transpose the data</a>." %}
 </p>
+<script type="text/javascript">
+require(['selectize'], function() {
+    $('#chart-type').selectize({
+        render: {
+            option: function(vis, escape) {
+                return '<div class="option">'+
+                    '<img style="height:25px" src="'+vis.__static_path+vis.id+'.png" /> '+escape(vis.title) +
+                    '</div>';
+            },
+            item: function(vis, escape) {
+                return '<div class="item">'+
+                    '<img style="height:25px" src="'+vis.__static_path+vis.id+'.png" /> '+escape(vis.title) +
+                    '</div>';
+            }
+        }
+    });
+});
+
+</script>
 
 {# todo: axes editor #}
 
-<h3>{% trans "Dimensions" %}</h3>
-
-...
-
+{% include "chart/visualize/axes-editor.twig" %}
 
 
 {% if vis.dimensions == 1 %}

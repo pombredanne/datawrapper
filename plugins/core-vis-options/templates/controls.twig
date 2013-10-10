@@ -31,8 +31,8 @@
 
 {% elseif option.type == 'select' %}
 
-    <label class="control-label" for="{{ key }}">{{ option.label|raw }}</label>
-    <div class="controls">
+    <div class="pull-left">
+        <label for="{{ key }}">{{ option.label|raw }}</label>
         <select id="{{ key }}">
             {% for opt in option.options %}
             <option value="{{ opt.value }}" {% if opt.default %}selected="selected" {% endif %}>{{ opt.label }}</option>

@@ -10,7 +10,11 @@ body {
 }
 
 header {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+header .navbar .brand {
+    margin-left: 0;
 }
 
 html .navbar li {
@@ -1539,3 +1543,31 @@ label.separator {
     width: 121px;
   }
 }
+
+.selectize-control.multi .items .item {
+    background: #09c;
+    color: #fff;
+}
+
+html .selectize-control.single .selectize-input {
+    padding: 4px 9px;
+    background: #fff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    border: 1px solid #d0d0d0;
+}
+
+html .selectize-control .selectize-input .item {
+    font-size: 13px;
+}
+
+html .selectize-control.multi .selectize-input > div.active {
+    z-index: 1000!important;
+}
+
+html .selectize-control.multi .selectize-input {
+    position: static;
+}
+
+

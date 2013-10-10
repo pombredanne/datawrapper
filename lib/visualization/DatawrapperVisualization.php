@@ -43,10 +43,15 @@ class DatawrapperVisualization {
         // we save the path to the static files of the visualization
         $meta['__static_path'] =  '/static/plugins/' . $plugin->getName() . '/';
         $meta['version'] = $plugin->getVersion();
-        $this->visualizations[$meta['id']] = $meta;
         if ($asset_callback) {
             $this->vis_asset_callbacks[$meta['id']] = $asset_callback;
         }
+        if (isset($meta['axes'])) {
+            foreach ($meta['axes'] as $key => $axis) {
+                $meta['axes'][$key]['id'] = $key;  // store axis id
+            }
+        }
+        $this->visualizations[$meta['id']] = $meta;
     }
 
     public function _assets($vis_id, $chart) {

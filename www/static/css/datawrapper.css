@@ -3,10 +3,14 @@
  */
 
 body {
-    background: #fff;
+    background: #faf9f9;
     color: #444;
     margin-top: 0px;
     position: relative;
+}
+
+header {
+    margin-bottom: 20px;
 }
 
 html .navbar li {
@@ -204,9 +208,9 @@ body .navbar-inverse .nav li.dropdown.active > .dropdown-toggle:hover
 }
 
 .dw .create-nav > * {
-    background: #f2f2f2;
+    background: #edecec;
     position: relative;
-    box-shadow: 2px 2px 2px #e2e2e2 inset;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.07) inset;
     border-radius: 10px 0 0 10px;
     text-align: left;
     height: 50px;
@@ -229,7 +233,7 @@ body .navbar-inverse .nav li.dropdown.active > .dropdown-toggle:hover
 }
 
 .dw .create-nav > div.active {
-    background: #cc0000;
+    background: #09c;
     box-shadow: none;
     font-weight: normal;
     color: #fff;
@@ -239,12 +243,16 @@ body .navbar-inverse .nav li.dropdown.active > .dropdown-toggle:hover
     color: #999;
 }
 
+.dw .create-nav > a {
+    
+}
+
 .dw .create-nav > a:hover {
     text-decoration: none;
 }
 
 .dw .create-nav > a.passed {
-    background: #ddd;
+    background: #C8D6E4;
 }
 
 .dw .create-nav > * .step {
@@ -654,6 +662,7 @@ dl.dl-horizontal dd {
     overflow: hidden;
     background: #fff;
     max-width: 98%;
+    margin: 0 auto;
 }
 
 #iframe-vis {

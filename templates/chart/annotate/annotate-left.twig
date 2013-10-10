@@ -1,0 +1,7 @@
+
+<h3>{% trans "Select layout:" %}</h3>
+<select id="select-theme" class="span2">
+    {% for theme in themes %}{% if not theme.hidden %}
+    <option value="{{ theme.id }}">{{ theme.title }}</option>
+    {% endif %}{% endfor %}
+</select>

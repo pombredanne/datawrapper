@@ -1,0 +1,182 @@
+
+{% extends "chart/base.twig" %}
+{% block content %}
+
+{{ parent() }}
+
+{#
+ Annotate step
+#}
+
+<div class="dw-create-annotate chart-editor">
+    <div class="row">
+        <div class="span2-5">
+            {% include "chart/annotate/annotate-left.twig" %}
+        </div>
+        <div class="span7">
+            <div id="iframe-wrapper" style="height:500px;" >
+                <iframe src="/chart/{{ chart.id }}/preview?innersvg=1&amp;random={{ random() }}" id="iframe-vis" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen>
+                </iframe>
+            </div>
+            <div class="resize-chart-wrap">
+                <div class="resize-chart">
+                    {% trans "Resize to: " %}
+                    <input id="resize-w" class="input-large" type="text" value="" /> ×
+                    <input id="resize-h" class="input-large" type="text" value="" />
+                    (e.g. <a href="#">480×320</a>
+                    <a href="#">480×480</a>
+                    <a href="#">640×360</a>
+                    <a href="#">640×480</a>)
+                </div>
+            </div>
+        </div>
+        <div class="span-2-5">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{#
+
+<div style="margin-top:20px;">
+
+</div>
+
+
+<div class="story-title control-group">
+    <label class="separator">{% trans "Guide the audience to read the chart" %}</label>
+    <div class="pull-left">
+        <label for="text-title">{% trans "Title" %}</label>
+        <input type="text" id="text-title" class="input-xlarge span4" />
+
+        <label for="text-intro">{% trans "Description" %}</label>
+        <textarea type="text" id="text-intro" class="input-xlarge span4"></textarea>
+    </div>
+</div>
+
+{% include "chart/visualize/highlight.twig" %}
+
+<div class="data-source control-group" style="clear:both">
+    <label class="separator">{% trans "Where did you get the data from?" %}</label>
+    <div class="pull-left">
+        <label>{% trans "Source name" %}</label>
+        <input id="describe-source-name" type="text" class="span2" placeholder="{% trans "name of the organisation" %}">
+    </div>
+    <div class="pull-left">
+        <label>{% trans "Source URL" %}</label>
+        <input id="describe-source-url" type="text" class="span2" placeholder="{% trans "URL of the dataset" %}">
+    </div>
+</div>
+
+
+{% if not vis['hide-base-color-selector'] %}
+    {% if not vis.options['select-color'] or vis.options['select-color']["default"]  %}
+        <div class="control-group select-color">
+            <label class="control-label" for="select-color">{% trans "Choose a base color" %}</label>
+            <div class="controls">
+                <div id="select-color"></div>
+            </div>
+        </div>
+    {% endif %}
+    {% if not vis.options['custom-color'] or vis.options['custom-color']["default"]  %}
+        <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                <a class="btn btn-small" role="button" onclick="$('#customColors').show();$('#visOptions').hide();">{% trans "or define custom colors" %}</a>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+
+
+<fieldset id="customColors" style="display:none">
+    <button onclick="$('#customColors').hide();$('#visOptions').show();" class="btn pull-right btn-small" data-dismiss="modal">{% trans "Return" %}</button>
+    <h3>{% trans "Customize chart colors" %}</h3>
+    <p style="margin-bottom:20px">{% trans "Please use custom colors only if it is absolutely necessary, for instance to identify political parties. If possible please use the palette colors." %}</p>
+    <div class="row">
+        <div class="span2" style="width:43%">
+            <h4>{% trans "Select element(s):" %}</h4>
+            <ul class="dataseries unstyled">
+            </ul>
+            <div style="font-size:12px;text-align:center;margin-bottom:10px;">
+                {% trans "Select:" %} &nbsp;
+                <a onclick="$('.dataseries li').addClass('selected')">{% trans "all" %}</a> &nbsp;
+                <a onclick="$('.dataseries li').removeClass('selected')">{% trans "none" %}</a> &nbsp;
+                <a onclick="$('.dataseries li').toggleClass('selected')">{% trans "invert" %}</a>
+            </div>
+
+        </div>
+        <div class="span2" style="width:42%">
+             <h4>{% trans "Choose a color:" %}</h4>
+             <label>{% trans "Pick from palette..." %}</label>
+             <div id="palette-colors"></div>
+
+             <label>{% trans "...or enter a custom color" %}</label>
+            <div class="control-group">
+                <input id="user-color" type="text" class="text input-small" placeholder="FF0000" />
+            </div>
+            <button id="reset-color-choice" class="btn">{% trans "Reset color (use default)" %}</button>
+        </div>
+    </div>
+</fieldset>
+
+
+<style type="text/css">
+
+#customColors h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+#customColors .color {
+    width: 17px;
+    height: 17px;
+    float: left;
+    background: #ccc;
+    text-align: center;
+    line-height: 14px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#customColors .dataseries {
+    border-radius: 5px;
+    max-height: 250px;
+    overflow:auto;
+    padding: 3px 0;
+    margin-bottom: 4px;
+    background:#fff;
+    border-top:1px solid #aaa;
+    border-left:1px solid #aaa;
+    border-bottom:1px solid #ccc;
+    border-right:1px solid #ccc;
+    box-shadow:inset 1px 1px 4px rgba(0,0,0,.2);
+}
+
+#customColors .dataseries li {
+    padding: 5px 5px 1px 8px;
+    cursor: pointer;
+}
+
+#customColors .dataseries li:nth-child(2n) {
+    background: rgba(0,0,0,.075);
+}
+
+#customColors .dataseries label {
+    padding-left: 25px;
+    line-height: 17px;
+    color: #555;
+}
+
+#customColors .dataseries .selected label {
+    font-weight: bold;
+    color: #000;
+}
+
+
+</style>
+
+#}

@@ -5,7 +5,7 @@
 body {
     background: #fff;
     color: #444;
-    margin-top: 60px;
+    margin-top: 0px;
     position: relative;
 }
 
@@ -647,7 +647,7 @@ dl.dl-horizontal dd {
  */
 
 #iframe-wrapper {
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 24px rgba(10, 0, 0, 0.4);
     border: 1px solid #fff;
     padding: 10px;
     border-radius: 7px;
@@ -1505,4 +1505,28 @@ label.separator {
 .number-stepper .btn-plus {
     padding-left: 7px;
     padding-right: 7px;
+}
+
+/*
+ */
+@media (min-width: 1200px) {
+    .span2-5 {
+        width: 220px;
+    }
+    input.span2-5,
+    textarea.span2-5,
+    .uneditable-input.span2-5 {
+    width: 206px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .span2-5 {
+    width: 135px;
+  }
+  input.span2,
+  textarea.span2,
+  .uneditable-input.span2 {
+    width: 121px;
+  }
 }

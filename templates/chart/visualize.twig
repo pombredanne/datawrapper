@@ -5,6 +5,7 @@
 
 {% set vismeta = chart.metadata.visualize %}
 
+<link rel="stylesheet" type="text/css" href="/static/vendor/selectize/selectize.bootstrap2.css">
 <script type="text/javascript" src="/static/vendor/canvg/rgbcolor.js"></script>
 <script type="text/javascript" src="/static/vendor/canvg/canvg.js"></script>
 <script type="text/javascript" src="/static/vendor/chromajs/chroma.min.js"></script>
@@ -29,7 +30,7 @@ dw.backend.ready(function() {
 <div class="dw-create-visualize chart-editor">
     <div class="row">
         <div class="span2-5">
-            {% include "chart/visualize/sidebar-left.twig" %}
+            {% include "chart/visualize/visualize-left.twig" %}
         </div>
         <div class="span7">
 
@@ -44,7 +45,7 @@ dw.backend.ready(function() {
 
         </div>
         <div class="span2-5">
-            {% include "chart/visualize/sidebar-right.twig" %}
+            {% include "chart/visualize/visualize-right.twig" %}
         </div>
     </div>
 </div>

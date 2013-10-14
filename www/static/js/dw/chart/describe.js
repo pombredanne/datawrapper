@@ -67,16 +67,16 @@ define(['handsontable'], function(handsontable) {
 
         chart.sync('#has-headers', 'metadata.data.horizontal-header');
 
-        $('#number-format').change(swapUnitAndCurrency);
-        swapUnitAndCurrency();
+        // $('#number-format').change(swapUnitAndCurrency);
+        // swapUnitAndCurrency();
 
-        updateCurrencyInNumberFormat();
-        $('#number-currency').change(updateCurrencyInNumberFormat);
+        // updateCurrencyInNumberFormat();
+        // $('#number-currency').change(updateCurrencyInNumberFormat);
 
         // update data table after format changes
-        $('.number-format').change(function() {
-            updateTable(dataset, chart);
-        });
+        // $('.number-format').change(function() {
+        //     updateTable(dataset, chart);
+        // });
 
         $('#reset-data-changes').click(function(){
             metadata.changes.revert();
@@ -136,10 +136,10 @@ define(['handsontable'], function(handsontable) {
 
 
         syncColumnFormat('#column-type', 'type');
-        syncColumnFormat('#number-format', 'number-format');
-        syncColumnFormat('#number-divisor', 'number-divisor');
-        syncColumnFormat('#number-append', 'number-append');
-        syncColumnFormat('#number-prepend', 'number-prepend');
+        // syncColumnFormat('#number-format', 'number-format');
+        // syncColumnFormat('#number-divisor', 'number-divisor');
+        // syncColumnFormat('#number-append', 'number-append');
+        // syncColumnFormat('#number-prepend', 'number-prepend');
 
         $('#describe-source-url').blur(storeCorrectedSourceUrl);
 
@@ -417,6 +417,7 @@ define(['handsontable'], function(handsontable) {
             });
         }
 
+        /*
         function showColumnSettings() {
             if(selectedColumns.length) {
                 var serie = getSeriesOfIndex(selectedColumns[0]);
@@ -473,7 +474,6 @@ define(['handsontable'], function(handsontable) {
             }
         } // end showColumnSettings
 
-
         function updateAutomaticFormat() {
             $('#automatic-format')
                 .prop('checked', _.isEqual(metadata.columnFormat.get(getSeriesOfIndex(selectedColumns[0])), {}))
@@ -505,6 +505,7 @@ define(['handsontable'], function(handsontable) {
             }
             updateUI();
         } // end updateAutomaticFormat
+        */
 
         function storeCorrectedSourceUrl() {
             var v = $(this).val();

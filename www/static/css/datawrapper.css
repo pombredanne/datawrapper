@@ -237,7 +237,7 @@ body .navbar-inverse .nav li.dropdown.active > .dropdown-toggle:hover
 }
 
 .dw .create-nav > div.active {
-    background: #09c;
+    background: #c00;
     box-shadow: none;
     font-weight: normal;
     color: #fff;
